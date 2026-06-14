@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GUO XINGYA | e-Portfolio | SecondLife App</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --green-deep:   #1A4731;
+    --green-mid:    #2D6A4F;
+    --green-accent: #52B788;
+    --green-light:  #B7E4C7;
+    --sand:         #F5F0E8;
+    --ink:          #1C1C1C;
+    --muted:        #5A6A60;
+    --white:        #FFFFFF;
+    --card-bg:      #FFFFFF;
+    --border:       #D8EAE0;
+    --radius:       14px;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body:    'Inter', sans-serif;
+    --transition:   0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--sand);
+    color: var(--ink);
+    line-height: 1.65;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(26,71,49,0.97);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 60px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  }
+  .nav-brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--green-light);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  .nav-links {
+    display: flex;
+    gap: 0.2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 6px 11px;
+    border-radius: 8px;
+    transition: var(--transition);
+    letter-spacing: 0.02em;
+  }
+  .nav-links a:hover { color: #fff; background: rgba(82,183,136,0.25); }
+
+  /* hamburger */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: var(--transition); }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 88vh;
+    background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 55%, #3a8c64 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5rem 1.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  #home::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(82,183,136,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  /* leaf motif */
+  #home::after {
+    content: '♻';
+    position: absolute;
+    bottom: -30px;
+    right: 5%;
+    font-size: 220px;
+    opacity: 0.05;
+    line-height: 1;
+  }
+  .hero-content { position: relative; max-width: 760px; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(82,183,136,0.25);
+    color: var(--green-light);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 1.4rem;
+    border: 1px solid rgba(82,183,136,0.4);
+  }
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+  .hero-name span { color: var(--green-accent); }
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 0.4rem;
+  }
+  .hero-intro {
+    margin-top: 1.4rem;
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.82);
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+  .sdg-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 2rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px;
+    padding: 8px 20px;
+    color: #fff;
+    font-size: 0.88rem;
+    font-weight: 500;
+  }
+  .sdg-badge .dot { width: 10px; height: 10px; background: var(--green-accent); border-radius: 50%; flex-shrink: 0; }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 1.5rem; }
+  .container { max-width: 1060px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green-accent);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    font-weight: 700;
+    color: var(--green-deep);
+    margin-bottom: 0.6rem;
+    line-height: 1.15;
+  }
+  .section-desc {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 600px;
+    margin-bottom: 2.8rem;
+  }
+  .divider {
+    width: 48px;
+    height: 4px;
+    background: var(--green-accent);
+    border-radius: 2px;
+    margin-bottom: 1.2rem;
+  }
+
+  /* ── LABS GRID ── */
+  #labs { background: var(--sand); }
+  .labs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.6rem;
+  }
+  .lab-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow var(--transition), transform var(--transition);
+  }
+  .lab-card:hover { box-shadow: 0 12px 40px rgba(45,106,79,0.15); transform: translateY(-4px); }
+  .lab-card-header {
+    padding: 1.2rem 1.4rem 0.9rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .lab-num {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--green-accent);
+    line-height: 1;
+    min-width: 36px;
+  }
+  .lab-info h3 {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--green-deep);
+  }
+  .lab-info span {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .video-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: #0a1a12;
+  }
+  .video-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .lab-body {
+    padding: 1.2rem 1.4rem 1.4rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .reflection-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green-accent);
+  }
+  .lab-body p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--green-deep); }
+  #projects .section-label { color: var(--green-light); }
+  #projects .section-title { color: #fff; }
+  #projects .section-desc { color: rgba(255,255,255,0.6); }
+  #projects .divider { background: var(--green-accent); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
+    gap: 2rem;
+  }
+  .project-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(82,183,136,0.25);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: box-shadow var(--transition), transform var(--transition);
+  }
+  .project-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,0.35); transform: translateY(-5px); }
+  .project-card-header {
+    padding: 1.4rem 1.6rem 1rem;
+    border-bottom: 1px solid rgba(82,183,136,0.15);
+  }
+  .project-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green-accent);
+    margin-bottom: 0.5rem;
+  }
+  .project-card-header h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.4rem;
+  }
+  .project-card-header p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.55;
+  }
+  .project-body { padding: 1.2rem 1.6rem 1.6rem; }
+  .project-body .reflection-label { color: var(--green-light); }
+  .project-body p { font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.6; margin-bottom: 1.2rem; }
+  .btn-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-accent);
+    color: var(--green-deep);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 9px 20px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: var(--transition);
+    letter-spacing: 0.02em;
+  }
+  .btn-github:hover { background: var(--green-light); }
+  .btn-github svg { width: 16px; height: 16px; fill: currentColor; }
+
+  /* placeholder notice */
+  .placeholder-notice {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.35);
+    font-style: italic;
+  }
+
+  /* ── REFLECTION ── */
+  #reflection { background: #fff; }
+  .reflection-box {
+    background: linear-gradient(135deg, #f0faf4 0%, #e8f5ee 100%);
+    border-left: 5px solid var(--green-accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 2.2rem 2.4rem;
+    font-size: 1.05rem;
+    color: var(--green-deep);
+    line-height: 1.8;
+    max-width: 780px;
+    font-style: italic;
+    position: relative;
+  }
+  .reflection-box::before {
+    content: '"';
+    font-family: Georgia, serif;
+    font-size: 5rem;
+    color: var(--green-light);
+    position: absolute;
+    top: -18px;
+    left: 20px;
+    line-height: 1;
+  }
+  .reflection-box p { padding-top: 1.2rem; }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--sand); }
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    max-width: 720px;
+  }
+  .skill-pill {
+    background: var(--green-deep);
+    color: var(--green-light);
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: 100px;
+    letter-spacing: 0.03em;
+    transition: var(--transition);
+  }
+  .skill-pill:hover { background: var(--green-mid); color: #fff; }
+
+  /* ── RESOURCES ── */
+  #resources { background: #fff; }
+  .resources-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    max-width: 680px;
+  }
+  .resources-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+  .resources-list li::before {
+    content: '↗';
+    color: var(--green-accent);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .ai-note {
+    margin-top: 2rem;
+    padding: 1rem 1.4rem;
+    background: #f0faf4;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    max-width: 680px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--green-deep);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2rem 1.5rem;
+    font-size: 0.85rem;
+  }
+  footer strong { color: var(--green-light); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: var(--green-deep); padding: 1rem; gap: 0.2rem; }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 10px 14px; font-size: 0.9rem; }
+    .hamburger { display: flex; }
+    .projects-grid { grid-template-columns: 1fr; }
+    section { padding: 3.5rem 1.2rem; }
+    .reflection-box { padding: 1.5rem 1.5rem 1.5rem 1.8rem; font-size: 0.97rem; }
+  }
+  @media (max-width: 480px) {
+    .labs-grid { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-brand">SecondLife · e-Portfolio</div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#labs">Labs</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#reflection">Reflection</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#resources">Resources</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" aria-label="Toggle menu" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="home">
+  <div class="hero-content">
+    <div class="hero-tag">Mobile Application Programming · TK2323 / TM2213</div>
+    <h1 class="hero-name">GUO <span>XINGYA</span></h1>
+    <p class="hero-sub">A207424 &nbsp;·&nbsp; 2AKIT1 &nbsp;·&nbsp; Instructor: Cikgu Izwan</p>
+    <p class="hero-intro">
+      I am a mobile programming student passionate about building Android applications that solve real-world problems.
+      Throughout this course I developed the <em>SecondLife</em> app — a smart household tool that helps users reduce
+      food waste by tracking expiry dates, connecting to product APIs, and sharing surplus food with their community.
+    </p>
+    <div class="sdg-badge">
+      <span class="dot"></span>
+      SDG 12: Responsible Consumption and Production
+    </div>
+    <p style="margin-top:0.9rem; font-size:0.82rem; color:rgba(255,255,255,0.45); max-width:540px; margin-left:auto; margin-right:auto;">
+      Smart mobile applications can empower users to reduce waste, track their footprint, and make resource-efficient decisions in daily life.
+    </p>
+  </div>
+</section>
+
+<!-- ── LABS ── -->
+<section id="labs">
+  <div class="container">
+    <div class="section-label">Lab Work</div>
+    <div class="divider"></div>
+    <h2 class="section-title">Five Labs Journey</h2>
+    <p class="section-desc">Each lab built on the last — from a static UI to a fully persistent, database-driven application.</p>
+
+    <div class="labs-grid">
+
+      <!-- Lab 1 -->
+      <article class="lab-card">
+        <div class="lab-card-header">
+          <div class="lab-num">01</div>
+          <div class="lab-info">
+            <h3>UI Layout</h3>
+            <span>Jetpack Compose · Basic Screens</span>
+          </div>
+        </div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/N684omXcJX0"
+            title="Lab 1 – UI Layout" allowfullscreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+          </iframe>
+        </div>
+        <div class="lab-body">
+          <div class="reflection-label">Reflection</div>
+          <p>In Lab 1 I built the foundational UI for SecondLife using Jetpack Compose, learning how composables and state hoisting replace traditional XML layouts. Setting up a clean screen hierarchy early saved considerable refactoring time in later labs. This lab taught me to think in components before writing a single line of logic.</p>
+        </div>
+      </article>
+
+      <!-- Lab 2 -->
+      <article class="lab-card">
+        <div class="lab-card-header">
+          <div class="lab-num">02</div>
+          <div class="lab-info">
+            <h3>Interaction</h3>
+            <span>State · Click Handlers · Forms</span>
+          </div>
+        </div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/_VU0Cu1XNTY"
+            title="Lab 2 – Interaction" allowfullscreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+          </iframe>
+        </div>
+        <div class="lab-body">
+          <div class="reflection-label">Reflection</div>
+          <p>Lab 2 introduced reactive state management with <code>remember</code> and <code>mutableStateOf</code>, enabling the app to respond to user inputs dynamically. I implemented form validation for the grocery entry screen and learned how unidirectional data flow keeps UIs predictable. Handling edge cases — empty fields, invalid dates — sharpened my defensive programming skills.</p>
+        </div>
+      </article>
+
+      <!-- Lab 3 -->
+      <article class="lab-card">
+        <div class="lab-card-header">
+          <div class="lab-num">03</div>
+          <div class="lab-info">
+            <h3>Material Design</h3>
+            <span>Material 3 · Theming · Components</span>
+          </div>
+        </div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/uJrdbmg88Ng"
+            title="Lab 3 – Material Design" allowfullscreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+          </iframe>
+        </div>
+        <div class="lab-body">
+          <div class="reflection-label">Reflection</div>
+          <p>Applying Material 3 brought a consistent visual language to the app — colour schemes, typography scales, and motion semantics aligned with Google's design system. I customised the green palette to reinforce the SDG 12 theme throughout. Learning to use <code>MaterialTheme</code> tokens rather than hard-coded values made future design iterations far easier.</p>
+        </div>
+      </article>
+
+      <!-- Lab 4 -->
+      <article class="lab-card">
+        <div class="lab-card-header">
+          <div class="lab-num">04</div>
+          <div class="lab-info">
+            <h3>Navigation</h3>
+            <span>Navigation Compose · Back Stack</span>
+          </div>
+        </div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/CnVDKz0mLnM"
+            title="Lab 4 – Navigation" allowfullscreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+          </iframe>
+        </div>
+        <div class="lab-body">
+          <div class="reflection-label">Reflection</div>
+          <p>Navigation Compose replaced my earlier ad-hoc screen switching with a declarative, type-safe route graph. Managing the back stack and passing arguments between screens — especially expiry-date detail views — revealed the importance of a well-planned navigation architecture. This lab laid the groundwork for a multi-screen Project 1 delivery.</p>
+        </div>
+      </article>
+
+      <!-- Lab 5 -->
+      <article class="lab-card">
+        <div class="lab-card-header">
+          <div class="lab-num">05</div>
+          <div class="lab-info">
+            <h3>Room Database</h3>
+            <span>Room · DAO · Flow</span>
+          </div>
+        </div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/Kx-TM55rJpA"
+            title="Lab 5 – Room" allowfullscreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+          </iframe>
+        </div>
+        <div class="lab-body">
+          <div class="reflection-label">Reflection</div>
+          <p>Room transformed SecondLife from a stateless prototype into a genuinely persistent application. Defining entities, DAOs, and a typed database class clarified how Android's local storage layer works under the hood. Observing live data via <code>Flow</code> and surfacing it through the ViewModel meant the UI always stayed in sync with the database without manual refresh calls.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Capstone Work</div>
+    <div class="divider"></div>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-desc">Two milestone deliverables that brought all lab skills together into a production-ready Android application.</p>
+
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <article class="project-card">
+        <div class="project-card-header">
+          <div class="project-tag">Project 1 · Lab 4 + Working Features</div>
+          <h3>SecondLife</h3>
+          <p>Households often waste food because they lose track of expiry dates. This app provides a localised UI to track daily groceries and alert users before items expire.</p>
+        </div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/LaFPnUB3nD0"
+            title="Project 1 VSR – SecondLife" allowfullscreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+          </iframe>
+        </div>
+        <div class="project-body">
+          <div class="reflection-label">Lessons Learned</div>
+          <p>Successfully established the MVVM architecture and shared state flows across multiple screens using Navigation Compose. Separating UI, business logic, and data layers from the outset made the codebase maintainable and easy to extend. I also learned how to handle lifecycle-aware components to prevent memory leaks in long-running coroutines.</p>
+          <a href="#" class="btn-github" aria-label="View Project 1 on GitHub">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub
+          </a>
+          <span class="placeholder-notice">⚠ GitHub link — please update before submission</span>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card">
+        <div class="project-card-header">
+          <div class="project-tag">Project 2 · Lab 5 + API + Sensors + Cloud</div>
+          <h3>SecondLife</h3>
+          <p>To further reduce waste, users need external product data and a way to share surplus food with the community. This version integrates APIs, hardware sensors, and cloud storage.</p>
+        </div>
+        <div class="video-wrap">
+          <!-- Placeholder: replace VIDEO_ID with your actual YouTube embed ID -->
+          <div style="background:#0a1a12; display:flex; align-items:center; justify-content:center; height:200px; color:rgba(255,255,255,0.35); font-size:0.88rem; text-align:center; padding:1rem;">
+            ▶ YouTube embed coming soon<br><span style="font-size:0.75rem; opacity:0.6;">Replace with your embed URL</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="reflection-label">Lessons Learned</div>
+          <p>Overcame complex integration challenges bridging Room (local), Retrofit (APIs), hardware sensors (CameraX), and Firebase Firestore (Cloud) into one cohesive flow. Debugging the synchronisation between local and remote data sources highlighted the importance of a single source of truth in the ViewModel layer. This project solidified my understanding of coroutine scopes, error handling, and offline-first design patterns.</p>
+          <a href="#" class="btn-github" aria-label="View Project 2 on GitHub">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            View on GitHub
+          </a>
+          <span class="placeholder-notice">⚠ YouTube & GitHub links — please update before submission</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── REFLECTION ── -->
+<section id="reflection">
+  <div class="container">
+    <div class="section-label">Learning Journey</div>
+    <div class="divider"></div>
+    <h2 class="section-title">Overall Reflection</h2>
+    <div class="reflection-box">
+      <p>
+        From composing a basic UI in Lab 1 to integrating Room, Retrofit, CameraX, and Firebase in Project 2,
+        this course reshaped how I approach software development — always starting with architecture before aesthetics.
+        Each lab felt like unlocking a new layer of Android's ecosystem, and every bug I fixed deepened my understanding
+        of the platform far more than any tutorial could. Building SecondLife around SDG 12 gave the technical work
+        real purpose: the app does not just demonstrate skills, it genuinely helps households make smarter, less wasteful
+        choices. I leave this course confident in Jetpack Compose, MVVM, and cloud integration, and eager to carry
+        these skills into real-world projects.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Tech Stack</div>
+    <div class="divider"></div>
+    <h2 class="section-title">Skills &amp; Technologies</h2>
+    <p class="section-desc">Tools and frameworks used across labs and projects.</p>
+    <div class="skills-grid">
+      <span class="skill-pill">Kotlin</span>
+      <span class="skill-pill">Jetpack Compose</span>
+      <span class="skill-pill">Navigation Compose</span>
+      <span class="skill-pill">Room Database</span>
+      <span class="skill-pill">Retrofit</span>
+      <span class="skill-pill">Firebase Firestore</span>
+      <span class="skill-pill">CameraX</span>
+      <span class="skill-pill">ML Kit</span>
+      <span class="skill-pill">Material 3</span>
+      <span class="skill-pill">MVVM Architecture</span>
+      <span class="skill-pill">Coroutines &amp; Flow</span>
+      <span class="skill-pill">ViewModel</span>
+      <span class="skill-pill">GitHub</span>
+      <span class="skill-pill">Android Studio</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── RESOURCES ── -->
+<section id="resources">
+  <div class="container">
+    <div class="section-label">References</div>
+    <div class="divider"></div>
+    <h2 class="section-title">Resources &amp; Acknowledgements</h2>
+    <ul class="resources-list">
+      <li>Jetpack Compose — <em>developer.android.com/jetpack/compose</em></li>
+      <li>Room Persistence Library — <em>developer.android.com/training/data-storage/room</em></li>
+      <li>Navigation Compose — <em>developer.android.com/guide/navigation/navigation-compose</em></li>
+      <li>Retrofit 2 — <em>square.github.io/retrofit</em></li>
+      <li>Firebase Firestore — <em>firebase.google.com/docs/firestore</em></li>
+      <li>CameraX — <em>developer.android.com/training/camerax</em></li>
+      <li>ML Kit Barcode Scanning — <em>developers.google.com/ml-kit/vision/barcode-scanning</em></li>
+      <li>Material 3 Design System — <em>m3.material.io</em></li>
+      <li>Open Food Facts API — <em>world.openfoodfacts.org/data</em></li>
+    </ul>
+    <div class="ai-note">
+      <strong>AI Assistance Acknowledgement:</strong> Portions of this e-Portfolio HTML were generated with the assistance
+      of Claude (Anthropic) as a front-end scaffolding tool. All written reflections, technical decisions, and app
+      implementations are my own original work.
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p><strong>GUO XINGYA</strong> &nbsp;·&nbsp; A207424 &nbsp;·&nbsp; 2AKIT1 &nbsp;·&nbsp; © 2025</p>
+  <p style="margin-top:0.3rem; font-size:0.78rem;">Mobile Application Programming · TK2323 / TM2213 · Instructor: Cikgu Izwan</p>
+</footer>
+
+<script>
+  // hamburger toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  hamburger.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') navLinks.classList.toggle('open'); });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
+</body>
+</html>
